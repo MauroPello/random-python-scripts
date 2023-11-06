@@ -1,0 +1,17 @@
+Must know:
+    - works only with Microsoft Teams
+    - needs default browser to automatically open teams.microsoft.com links with Teams
+    - needs obs default scene to be the one recording Teams
+    - needs CTRL+ALT+R as shortcut for starting and stopping a recording within OBS
+    - needs teams.microsoft.com meeting links to be stored chronologically in a .txt file
+    - has to be run in the terminal, for example "python3 record_lesson.py today.txt"
+
+Requirements:
+    - python3
+    - pyautogui module installed (https://pyautogui.readthedocs.io/en/latest/install.html)
+    - obs
+    - microsoft teams
+
+Issues:
+    - Automatic shutdown doesn't work on macOS as it needs sudo privileges
+    - starts microsoft teams with "--disable-seccomp-filter-sandbox" for linux compatibility
