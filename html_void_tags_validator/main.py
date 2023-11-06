@@ -1,9 +1,8 @@
 import sys
 
 tags = open("special_tags.txt", "r").read().split("\n")
-tags = tags[:len(tags) - 1]
 lastDetections = [0 for tag in tags]
-html = open(sys.argv[1], "r").read().upper()
+html = open(sys.argv[1], "r").read().lower()
 toPrint = []
 hasDetected = True
 while hasDetected:
@@ -15,7 +14,7 @@ while hasDetected:
             closing = html.index(">", start)
             lastDetections[i] = closing
             if html[closing - 1] != "/" or html[closing - 2] != " ":
-                toPrint.append(str(html.count("\n", 0, closing) + 1) + ":" + str(start) + " - " + tags[i])
+                toPrint.append(str(html.count("\n", 0, closing) + 1) + ":" + str(start) + " - " + tags[i][1:])
         else:
             hasDetected = hasDetected or False
 
