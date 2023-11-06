@@ -5,7 +5,8 @@ tags = tags[:len(tags) - 1]
 lastDetections = [0 for tag in tags]
 html = open(sys.argv[1], "r").read().upper()
 toPrint = []
-while True:
+hasDetected = True
+while hasDetected:
     hasDetected = False
     for i in range(0, len(tags)):
         if html.count(tags[i], lastDetections[i]) != 0:
@@ -17,9 +18,10 @@ while True:
                 toPrint.append(str(html.count("\n", 0, closing) + 1) + ":" + str(start) + " - " + tags[i])
         else:
             hasDetected = hasDetected or False
-    if not hasDetected:
-        break
 
-toPrint.sort(key=lambda s: int(str(s).split(":")[0]))
-for line in toPrint:
-    print(line)
+if len(toPrint) > 0:
+    toPrint.sort(key=lambda s: int(str(s).split(":")[0]))
+    for line in toPrint:
+        print(line)
+else:
+    print("No problems found.")
