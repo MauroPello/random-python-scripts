@@ -19,7 +19,7 @@ while hasDetected:
             hasDetected = hasDetected or False
 
 if len(toPrint) > 0:
-    toPrint.sort(key=lambda s: int(str(s).split(":")[0]))
+    toPrint.sort(key=lambda s: int(str(s).split(":")[0]) * 10**10 + int(str(s)[str(s).index(":") + 1:str(s).index(" -")]))
     for line in toPrint:
         print(line)
 else:
